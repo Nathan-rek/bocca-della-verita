@@ -1,0 +1,119 @@
+digraph G {
+    graph [
+        layout=dot,
+        fontsize=14,
+        fontname="Helvetica",
+        rankdir=LR,
+        ranksep=0.2,
+        nodesep=0.5,
+        bgcolor=lightgrey
+    ];
+
+    subgraph cluster_installation {
+        label = "Bocca della verità";
+        color = white;
+        style = filled;
+        
+        Question -> Rpimic;
+
+
+        subgraph cluster_rpi {
+            label = "RPI";
+            color = lightblue;
+            style = filled;
+
+            node [
+                style=filled,
+                color=white,
+                fontsize=12,
+                fontname="Helvetica"
+            ];
+
+
+       
+            subgraph cluster_audio_processing {
+                label = "Traitement Audio";
+                color = lightgrey;
+                style = filled;
+
+                Rpimic -> vosk;
+
+                subgraph cluster_python {
+                    label = "Traitement Python";
+                    color = lightblue;
+                    style = filled;
+
+                    vosk -> txt;
+                }
+            }
+
+       
+            subgraph cluster_LLM {
+                label = "Traitement LLM";
+                color = lightgrey;
+                style = filled;
+
+                txt -> LLM;
+                Context -> LLM [dir=forward];
+                LLM -> reponse_txt;
+            }
+
+        
+            subgraph cluster_reponse {
+                label = "Traitement Voix";
+                color = lightgrey;
+                style = filled;
+
+                reponse_txt -> tts_voice -> reponse_audio;
+                
+                reponse_audio -> speaker
+            }
+
+        }
+        
+        speaker -> Reponse
+
+
+
+        Question [
+            shape=box,
+            style=filled,
+            color=white,
+            fontsize=20,
+            fontname="Helvetica"
+        ];
+        
+        Reponse [
+            shape=box,
+            style=filled,
+            color=white,
+            fontsize=20,
+            fontname="Helvetica"
+        ];
+
+        Rpimic [
+            shape=doublecircle,
+            fontsize=12,
+            fontname="Helvetica"
+        ];
+        
+        speaker [
+            shape=doublecircle,
+            fontsize=12,
+            fontname="Helvetica"
+        ];
+
+
+        txt [
+            shape=note,
+            fontsize=12,
+            fontname="Helvetica"
+        ];
+
+        reponse_txt [
+            shape=note,
+            fontsize=12,
+            fontname="Helvetica"
+        ];
+    }
+}
