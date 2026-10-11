@@ -10,5 +10,9 @@
 - AUDIO = idk depend
 
 
-
 CUSTOM MODEL: https://believemy.com/fr/r/creer-un-llm-personnalise-avec-ollama-en-2-minutes#personnaliser-llama-31-a-nos-besoins
+
+## Journal de bords
+
+11.10.2026: 
+- un modèle qwen n'est pas sufffisant pour comprendre les consigne du personnage, il fau tun plsu gros modèdle donc mais peut peuvent tourner sur rpi5 il faut minimun rpi5 avec beaucoup de giga et un systme de cooling.
