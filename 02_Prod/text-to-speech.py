@@ -2,7 +2,7 @@ import requests
 import subprocess
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
-MODEL = "depressed_qwen:latest"
+MODEL = "jakobina:latest"
 
 messages = [
     {
